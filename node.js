@@ -1,12 +1,5 @@
-import { Object } from "./object.js";
+import { INode } from "./iNode.js";
 import { ObjectsObserver } from "./objectsObserver.js";
-
-export class INode extends Object {
-	addObject(obj) { throw ('addObject() not implemented') }
-	deleteObject(name) { throw ('deleteObject() not implemented') }
-	get observer() { throw ('get objectsObserver() not implemented') }
-	get objects() { throw ('get objects() not implemented') }
-}
 
 export class Node extends INode {
 	#objects = [];

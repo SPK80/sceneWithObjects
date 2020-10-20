@@ -1,4 +1,4 @@
-import { INode } from "./node.js";
+import { INode } from "./iNode.js";
 
 export class NodeWrap extends INode {
 

@@ -1,4 +1,5 @@
-import { INode, Node } from "./node.js";
+import { Node } from "./node.js";
+import { INode } from "./iNode.js";
 import { DrawingObject } from "./drawingObject.js";
 import { Object } from "./object.js";
 import { CollidingObject, DeletingObject, MovingObject } from "./objectWrap.js";
