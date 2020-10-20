@@ -1,16 +1,22 @@
 import { Node } from "./node.js";
-import { INode } from "./iNode.js";
+import { INodeObject } from "./iNode.js";
 import { DrawingObject } from "./drawingObject.js";
 import { Object } from "./object.js";
 import { CollidingObject, DeletingObject, MovingObject } from "./objectWrap.js";
 import { TestObject } from "./TestObject.js";
 import { RenderNodeWrap } from "./NodeWrap.js";
 
-class TestNode extends INode {
+class TestNode extends INodeObject {
 	#wrapedNode;
+	#wrapedObject;
+
 	constructor(name) {
 		super(name);
-		this.#wrapedNode = new RenderNodeWrap(new Node(name));
+		this.#wrapedNode =
+			new RenderNodeWrap(
+				new Node());
+
+		this.#wrapedObject = new Object(name);
 
 		this.observer.addHandler('move',
 			args => {
@@ -28,7 +34,7 @@ class TestNode extends INode {
 				console.log('delete:', ...args);
 				// console.log(args[0].name);
 				this.deleteObject(args[0].name);
-				super._call([`!${args[0].name} deleted`]);
+				this.#wrapedObject._call([`!${args[0].name} deleted`]);
 			});
 
 		this.observer.addHandler('draw',
@@ -47,6 +53,11 @@ class TestNode extends INode {
 
 	get observer() { return this.#wrapedNode.observer }
 	get objects() { return this.#wrapedNode.objects }
+
+	observe(callback) {
+		this.#wrapedObject.observe(callback);
+	}
+
 }
 
 // const node = new RenderNodeWrap(new Node('TestNode'));

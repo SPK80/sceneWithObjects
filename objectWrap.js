@@ -1,4 +1,4 @@
-import { IObject } from "./object.js";
+import { IObject } from "./iObject.js";
 
 export class ObjectWrap extends IObject {
 	#object;

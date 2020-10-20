@@ -1,6 +1,6 @@
-import { INode } from "./iNode.js";
+import { INodeObject } from "./iNode.js";
 
-export class NodeWrap extends INode {
+export class NodeWrap extends INodeObject {
 
 	#node;
 	constructor(node) {
@@ -32,9 +32,18 @@ export class NodeWrap extends INode {
 
 export class RenderNodeWrap extends NodeWrap {
 
-	#render = 'render';
+	#render = new Render();
 	_initObject(obj) {
 		obj.init({ render: this.#render });
 	}
 
+}
+
+class Render {
+	x = 0;
+	y = 0;
+
+	draw(x, y) {
+		console.log(`draw x=${x + this.x} y=${y + this.y}`);
+	}
 }

@@ -1,7 +1,7 @@
-import { INode } from "./iNode.js";
+import { INodeObject } from "./iNode.js";
 import { ObjectsObserver } from "./objectsObserver.js";
 
-export class Node extends INode {
+export class Node extends INodeObject {
 	#objects = [];
 	get objects() { return this.#objects }
 
